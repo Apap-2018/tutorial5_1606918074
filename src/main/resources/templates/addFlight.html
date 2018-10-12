@@ -6,23 +6,53 @@
 		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
 	</head>
 	<body>
-		<nav th:replace="fragments/fragment :: navbar">
+		<nav th:replace="fragments/fragment :: navbar">Add Flight
 		</nav>
 		<h2>Hello</h2>
 		<h3>Tambah Flight</h3>
+		
 		<form th:action="@{/flight/add}" th:object="${flight}" method="POST">
-			<input type="hidden" th:field="*{pilot}" />
-			Flight Number:<br>
-			<input type="text" name="flightNumber" />
-			<br>
-			Origin: <br>
-			<input type="text" name="origin" />
-			Destination: <br>
-			<input type="text" name="destination" />
-			Time: <br>
-			<input type="date" name="time" />
-			<br><br>
+			<table border="I">
+				<caption>Flights</caption>
+				<thead>
+					<tr>
+						<th style="text-align: center">No.</th>
+						<th style="text-align: center">Flight Number</th>
+						<th style="text-align: center">Origin</th>
+						<th style="text-align: center">Destination</th>
+						<th style="text-align: center">Time</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="flight, addRow:*{pilotFlight}">
+						<td>
+							<input type="hidden" th:field="*{pilot}" />
+						</td>
+						<td>
+							<input type="text" name="flightNumber" />
+						</td>
+						<td>
+							<input type="text" name="origin" />
+						</td>
+						<td>
+							<input type="text" name="destination" />
+						</td>
+						<td>
+							<input type="date" name="time" />
+						</td>
+						<td>
+							<button>Add Flight</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			<button type="submit">Submit</button>
 		</form>
+		
+		<form th:action="@{/flight/add/}">
+			<button value="submit">Add Flight</button>
+		</form>
+		
 	</body>
 </html>

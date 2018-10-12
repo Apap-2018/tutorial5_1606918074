@@ -42,7 +42,7 @@
 						<td th:text="${flight.destination}"></td>
 						<td th:text="${flight.time}"></td>
 						<td>
-							<input type="checkbox" th:fields="*{pilotFlight}" th:value="${flight.id}"/>
+							<input type="checkbox" th:field="*{pilotFlight}" th:value="${flight.id}"/>
 							<label th:for="${#ids.prev('pilotFlight')}">Hapus</label>
 						</td>
 					</tr>
@@ -53,7 +53,7 @@
 		<br>
 		
 		<form th:action="@{/flight/add/}+${pilot.licenseNumber}">
-			<button value="sumbit">Add Flght</button>
+			<button value="submit">Add Flight</button>
 		</form>
 	</body>
 </html>
